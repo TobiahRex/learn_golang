@@ -1,13 +1,9 @@
 package main
 
 import (
-	// "./iterators"
-	// "./structs"
-	// "./composition"
+	"fmt"
 )
 
 func main() {
-	// iterators.Iterators()
-	// structs.Structs()
-	// composition.Composition()
+	fmt.Println("Hello, World!")
 }

@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func iterators() {
+func Iterators() {
 	for _, f := range getFuncs("Hello, World!", 2, 3, 3) {
 		result, err := f()
 		if err != nil {

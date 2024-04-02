@@ -1,7 +1,7 @@
 package main
 
 import (
-	"../pkg/structs"
+	"github.com/TobiahRex/learn_golang/pkg/structs"
 )
 
 func main() {
