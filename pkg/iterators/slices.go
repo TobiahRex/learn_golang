@@ -2,6 +2,7 @@ package iterators
 
 import (
 	"fmt"
+	"github.com/TobiahRex/learn_golang/pkg/structs"
 )
 
 func Slices() {
@@ -13,6 +14,23 @@ func Slices() {
 
 	fmt.Println("\nReading Slices: ")
 	readSlices()
+
+	fmt.Println("\nWriting into Slices: ")
+	saiyans := []*structs.Saiyan{
+		{Name: "Goku", Power: 9000, Father: nil},
+		{Name: "Gohan", Power: 3000, Father: nil},
+		{Name: "Vegeta", Power: 8000, Father: nil},
+	}
+	results := writeIntoSlices(saiyans)
+	for i, r := range results {
+		fmt.Println("i: ", i, "| r: ", r)
+	}
+
+	fmt.Println("\nAppending into Slices: ")
+	appended_powers := appendIntoSlices(saiyans)
+	for i, p := range appended_powers {
+		fmt.Println("i: ", i, "| power: ", p)
+	}
 }
 
 func slicesInitialized() {
@@ -62,8 +80,32 @@ func readSlices() {
 		fmt.Println("i: ", i, "| n: ", n)
 	}
 	fmt.Println("scores[1:3]: ", scores[1:3])
-	s := scores[:]
-	fmt.Println("scores copy ", s)
+	s := scores[3:] // Does not create a new slice, it creates a reference to the original slice.
+	fmt.Println("scores reference ", s)
 	s[0] = 100
 	fmt.Println("s: ", s)
+	fmt.Println("original scores: ", scores)
+	
+	s_copy := make([]int, len(scores))
+	copy(s_copy, scores) // Creates a new slice with the same length as the original slice.
+	fmt.Println("copy of scores: ", s_copy)
+	s_copy[2] = 100
+	fmt.Println("s_copy: ", s_copy)
+	fmt.Println("original scores: ", scores)
+}
+
+func writeIntoSlices(saiyans []*structs.Saiyan) []int {
+	powers := make([]int, len(saiyans))
+	for i, s := range saiyans {
+		powers[i] = s.Power
+	}
+	return powers
+}
+
+func appendIntoSlices(saiyans []*structs.Saiyan) []int {
+	powers := make([]int, 0, len(saiyans))
+	for _, s := range saiyans {
+		powers = append(powers, s.Power)
+	}
+	return powers
 }

@@ -10,4 +10,8 @@ func main() {
 	iterators.Arrays()
 	fmt.Println("\nSlices: ")
 	iterators.Slices()
+	fmt.Println("\nStrings: ")
+	iterators.Strings()
+	fmt.Println("\nMaps: ")
+	iterators.Maps()
 }

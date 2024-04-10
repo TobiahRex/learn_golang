@@ -5,16 +5,21 @@ import (
 )
 
 func Composition() {
+	a_goku := &Person{"Goku", "I'm a Saiyan!"}
+
 	goku := Saiyan {
-		&Person{"Goku"},
+		a_goku,
 		9000,
 	}
 	goku.Person.Introduce()
-	goku.Introduce()
+	a_goku.Introduction = "what's up?"
+	goku.Person.Introduce()
+	// goku.Introduce()
 }
 
 type Person struct {
 	Name string
+	Introduction string
 }
 
 type Saiyan struct {
@@ -23,7 +28,7 @@ type Saiyan struct {
 }
 
 func (p *Person) Introduce() {
-	fmt.Println("Hi, my name is", p.Name)
+	fmt.Println(p.Introduction, p.Name)
 }
 
 
